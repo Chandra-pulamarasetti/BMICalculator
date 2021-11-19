@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter | Pounds | Kilograms | Ounces </title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+
+    <style>
+
+        .block{
+            height: 100px;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        body {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #fcde67 10%, #E0C3FC 100%);
+        }
+
+        input {
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="display-5 text-center mb-3">BMI Calculator </h1>
+                    <form>
+                        <div class="form-group">
+                            <input id="lbsInput" type="number" class="form-control form-control-lg" placeholder="Enter weight in Kgs..." />
+                            <input id="htInput" type="number" class="form-control form-control-lg" placeholder="Enter height in cm..." />
+                            <button class="btn" type="submit" id="btn">Submit</button>
+                        </div>
+                    </form>
+                        <div id="output-u">
+                            <div class="mb-2"></div>
+                            <div class="bg-primary block" >
+                                    <h4>Underweight = &lt;18.5 </h4>
+                                    <div id="underOtpt"></div>
+                            </div>
+                        </div>
+
+                        <div id="output-n">
+                            <div class="mb-2"></div>
+                            <div class="bg-success block" >
+                                <h4>Normal weight = 18.5–24.9</h4>
+                                <div id="normalOtpt"></div>
+                            </div>
+                        </div>
+
+                        <div id="output-o">
+                            <div class="mb-2"></div>
+                            <div class="bg-danger block" >
+                                <h4>Overweight = 25–29.9 </h4>
+                                <div id="overOtpt"></div>
+                            </div>
+                        </div>
+
+                        <div id="output-ob">
+                            <div class="mb-2"></div>
+                            <div class="bg-danger block">
+                                <h4>Obesity = >30</h4>
+                                <div id="ObeseOtpt"></div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+
+      <script>
+        
+        document.getElementById('output-u').style.display = 'none';
+        document.getElementById('output-n').style.display = 'none';
+        document.getElementById('output-o').style.display = 'none';
+        document.getElementById('output-ob').style.display = 'none';
+        
+
+        document.getElementById('btn').addEventListener('click', function(e){
+                e.preventDefault();
+        
+
+        var kilo = document.getElementById('lbsInput').value
+
+        var ht = (document.getElementById('htInput').value)/100
+
+
+
+        let bmi = kilo/ht**2
+
+
+        if (bmi <= 18.5) {
+            document.getElementById('output-u').style.display = 'block';
+            document.getElementById('underOtpt').innerHTML = "Your BMI : " + bmi;
+        }
+
+        else if (bmi > 18.5 && bmi <= 24.9) {
+            document.getElementById('output-n').style.display = 'block';
+            document.getElementById('normalOtpt').innerHTML = "Your BMI : " + bmi;
+        }
+        else if (bmi > 24.9 && bmi <= 29.9) {
+            document.getElementById('output-o').style.display = 'block';
+            document.getElementById('overOtpt').innerHTML = "Your BMI : " + bmi;
+        }
+        else {
+            document.getElementById('output-ob').style.display = 'block';
+            document.getElementById('ObeseOtpt').innerHTML = "Your BMI : " + bmi;
+        }
+
+    })
+      
+      </script>
+
+
+
+</body>
+</html>
